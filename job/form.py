@@ -12,5 +12,6 @@ class ApplyForm(forms.ModelForm):
 class JobForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ['title', 'job_type', 'description', 'Vacancy', 'salary', 'experience', 'category', 'image']
+        fields = '__all__'
+        exclude = ['owner','slug',]
         
