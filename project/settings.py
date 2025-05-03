@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # styles
+    "bootstrap4",
 
     # apps
     'job.apps.JobConfig',
+    
 
 ]
 

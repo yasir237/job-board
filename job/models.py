@@ -53,14 +53,14 @@ class Category(models.Model):
     
 
 
-    class Apply(models.Model):
-        job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='apply')
-        name = models.CharField(max_length=100)
-        email = models.EmailField()
-        website = models.URLField(blank=True, null=True)
-        cv = models.FileField(upload_to='apply/cvs/')
-        cover_letter = models.TextField(max_length=1000, blank=True, null=True)
-        applied_at = models.DateTimeField(auto_now_add=True)
+class Apply(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='apply_job')
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    website = models.URLField(blank=True, null=True)
+    cv = models.FileField(upload_to='apply/cvs/')
+    cover_letter = models.TextField(max_length=1000, blank=True, null=True)
+    applied_at = models.DateTimeField(auto_now_add=True)
 
-        def __str__(self):
-            return f"{self.name} - {self.job.title}"
+    def __str__(self):
+        return f"{self.name} - {self.job.title}"
