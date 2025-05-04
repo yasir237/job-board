@@ -1,6 +1,7 @@
 from django import forms
 
 from .models import Apply, Job
+from django_countries.widgets import CountrySelectWidget
 
 
 class ApplyForm(forms.ModelForm):
@@ -14,4 +15,5 @@ class JobForm(forms.ModelForm):
         model = Job
         fields = '__all__'
         exclude = ['owner','slug',]
+    
         

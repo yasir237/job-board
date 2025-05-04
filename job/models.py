@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from django_countries.fields import CountryField
 
 # Create your models here.
 
@@ -19,6 +20,7 @@ class Job(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner_job')
     title = models. CharField(max_length=100) # column
     # location
+    location = CountryField()
     job_type = models.CharField(max_length=15, choices=JOB_TYPE)
     description = models.TextField(max_length=1000)
     published_at = models.DateTimeField(auto_now=True)

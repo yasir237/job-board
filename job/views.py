@@ -8,7 +8,7 @@ from .form import ApplyForm, JobForm
 def job_list(request):
     jobs = Job.objects.all()
 
-    paginator = Paginator(jobs, 1)  # Show 25 contacts per page.
+    paginator = Paginator(jobs, 10)  
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
@@ -45,8 +45,11 @@ def job_add(request):
     if request.method == 'POST':
         form = JobForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            job = form.save(commit=False)
+            job.owner = request.user
+            job.save()
             return redirect('jobs:job_list')
+
     else:
         form = JobForm()
 
